@@ -31,10 +31,6 @@ public class IncidenteServiceImp implements IncidenteService {
         incidente = new HashMap<Integer, Incidente>();
     }
 
-
-
-
-
     @Override
     public void addIncidente(Incidente incidente) {
         this.incidente.put(incidente.getId(), incidente);
@@ -123,28 +119,23 @@ public class IncidenteServiceImp implements IncidenteService {
 
     @Override
     public Incidente incidenteEdit(Incidente incidente) throws UsuarioException {
-
-
         try {
             if(incidente.getId() == 0){
                 throw new UsuarioException("El Id no puede ser cero");
             }
             Incidente incidenteEditar = this.incidente.get(incidente.getId());
-            if(incidente.getEstado() == Status.ASIGNADO){
-                incidenteEditar.changeStatus();
+            if(incidenteEditar.getEstado() == Status.ASIGNADO){
+                incidenteEditar.setEstado(Status.RESUELTO);
                 incidenteEditar.setSolucion();
-            }
-            if(incidente.getDescripcion() != null){
-                incidenteEditar.setDescripcion(incidente.getDescripcion());
+                if(incidenteEditar.getDescripcion() != null){
+                    incidenteEditar.setDescripcion(incidente.getDescripcion());
+                }
             }
             return incidenteEditar;
-
-
-
         } catch (Exception e){
             throw new UsuarioException(e.getMessage());
         }
-        }
+    }
 
     }
 

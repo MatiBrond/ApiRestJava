@@ -137,51 +137,38 @@ public class SparkRestEjercicio {
 
         //-------------------INCIDENTES----------------------------------
 
-        put("/proyecto/incidente/:id", (request, response) -> {
-
+        put("/incidente/:id", (request, response) -> {
             response.type("application/json");
-
             Incidente incidente = new Gson().fromJson(request.body(), Incidente.class);
             int idIncidente = Integer.valueOf(request.params(":id"));
-
-           Incidente incidenteEditar =  incidenteService.incidenteEdit(incidente);
-
-           if(incidenteEditar != null){
+            Incidente incidenteEditar =  incidenteService.incidenteEdit(incidente);
+            if(incidenteEditar != null){
                return new Gson().toJson(
                        new StandardResponse(
                                StatusResponse.SUCCESS,
                                new Gson().toJsonTree(
                                        incidenteEditar)));
-
-           }else{
+            }else{
                return new Gson().toJson(
                        new StandardResponse(
                                StatusResponse.ERROR,
                                "ERROR al editar incidente" ));
-           }
+            }
+            });
 
-
-
-
-        });
-
-        get("/proyecto/incidente", (request, response) -> {
+        get("/incidente", (request, response) -> {
             response.type("application/json");
-
             return new Gson().toJson(
                     new StandardResponse(
                             StatusResponse.SUCCESS,
                     new Gson().toJsonTree(
                             incidenteService.getIncidente())));
-
-
         });
 
-        post("/proyecto/incidente/:id", (request, response) -> {
+        post("/proyecto/:id/incidente/", (request, response) -> {
 
             response.type("application/json");
             int idProyecto = Integer.valueOf(request.params(":id"));
-
             Incidente incidente = new Gson().fromJson(
                     request.body(), Incidente.class);
             incidenteService.addIncidente(incidente);
@@ -192,7 +179,7 @@ public class SparkRestEjercicio {
         });
 
         //Obtener incidentes creados por un usuario
-        get("/proyecto/incidente/reportador/:id", (request, response) -> {
+        get("/incidente/reportador/:id", (request, response) -> {
             response.type("application/json");
 
             int idUser = Integer.valueOf(request.params(":id"));
@@ -206,7 +193,7 @@ public class SparkRestEjercicio {
         });
 
         //Obtener todos los incidentes asignados a un usuario
-        get("/proyecto/incidente/responsable/:id", (request, response) -> {
+        get("/incidente/responsable/:id", (request, response) -> {
             response.type("application/json");
 
             int idUser = Integer.valueOf(request.params(":id"));
@@ -217,7 +204,6 @@ public class SparkRestEjercicio {
                             incidenteService.getIncidentesParaUser(idUser))));
 
         });
-
 
         get("/proyecto/:id/incidente", (request, response) -> {
 
@@ -232,7 +218,6 @@ public class SparkRestEjercicio {
                                     proyectoService.getIncidentes(idProyecto))));
         });
 
-
         get("/incidente/abiertos", (request, response) -> {
 
             response.type("aplication/json");
@@ -243,7 +228,7 @@ public class SparkRestEjercicio {
                             new Gson().toJsonTree(incidenteService.getIncidentesAbiertos())));
         });
 
-        get("/incidente/abiertos", (request, response) -> {
+        get("/incidente/resueltos", (request, response) -> {
 
             response.type("aplication/json");
 
@@ -252,10 +237,6 @@ public class SparkRestEjercicio {
                             StatusResponse.SUCCESS,
                             new Gson().toJsonTree(incidenteService.getIncidentesResueltos())));
         });
-
-
-
-
 
         //------------------PROYECTOS---------------------------------------
         //POST addProyecto
@@ -299,10 +280,5 @@ public class SparkRestEjercicio {
                     new StandardResponse(StatusResponse.SUCCESS,
                             new Gson().toJsonTree(proyectoService.getProyecto(id))));
         });
-
-
-
-
-
     }
 }
