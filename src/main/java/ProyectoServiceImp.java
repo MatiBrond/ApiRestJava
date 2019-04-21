@@ -37,7 +37,11 @@ public class ProyectoServiceImp implements ProyectoService {
 
     @Override
     public void addProyecto(Proyecto proyecto) {
-        proyectoMap.put(proyecto.getId(), proyecto);
+
+        Proyecto p = proyectoMap.get(proyecto.getId());
+        if(p == null) {
+            proyectoMap.put(proyecto.getId(), proyecto);
+        }
     }
 
     @Override

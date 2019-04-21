@@ -31,8 +31,21 @@ public class UsuarioServiceImp implements UsuarioService {
         usuarioMap = new HashMap<Integer, Usuario>();
     }
 
-    public void addUsuario(Usuario usuario) {
-        usuarioMap.put(usuario.getId(), usuario);
+    public void addUsuario(Usuario usuario) throws UsuarioException {
+
+        try{
+
+            Usuario u = usuarioMap.get(usuario.getId());
+            if(u != null){
+                throw new UsuarioException("Id usuario repetido");
+            }
+            if(u == null) {
+                usuarioMap.put(usuario.getId(), usuario);
+            }
+        } catch (UsuarioException e){
+            System.out.println(e.getMessage());
+        }
+
     }
 
     public Collection<Usuario> getUsuario() {

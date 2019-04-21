@@ -3,7 +3,7 @@ import java.util.Collection;
 public interface UsuarioService {
 
 
-    public void addUsuario(Usuario usuario);
+    public void addUsuario(Usuario usuario) throws UsuarioException;
     public Collection<Usuario> getUsuario();
     public Usuario getUsuario(int id);
     public Usuario editUsuario(Usuario usuario) throws UsuarioException;

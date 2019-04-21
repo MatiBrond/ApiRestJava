@@ -13,10 +13,7 @@ public class SparkRestEjercicio {
 
         final UsuarioService usuarioService = new UsuarioServiceImp();
         final IncidenteService incidenteService = new IncidenteServiceImp();
-
         ProyectoServiceImp proyectoService = ProyectoServiceImp.getProyectoServiceImp();
-
-
 
         Usuario a = new Usuario(1, "Juan", "filardo");
         Usuario b = new Usuario(2, "Juan", "Beresiarte");
@@ -26,15 +23,19 @@ public class SparkRestEjercicio {
         Usuario f = new Usuario(6, "Emanuel David", "Ginobili");
         Usuario g = new Usuario(7, "Hernan", "Cattaneo");
 
+        try {
+            UsuarioException q = new UsuarioException();
+            usuarioService.addUsuario(a);
+            usuarioService.addUsuario(b);
+            usuarioService.addUsuario(c);
+            usuarioService.addUsuario(d);
+            usuarioService.addUsuario(e);
+            usuarioService.addUsuario(f);
+            usuarioService.addUsuario(g);
+        } catch (UsuarioException q){
+            System.out.println(q.getMessage());
 
-        usuarioService.addUsuario(a);
-        usuarioService.addUsuario(b);
-        usuarioService.addUsuario(c);
-        usuarioService.addUsuario(d);
-        usuarioService.addUsuario(e);
-        usuarioService.addUsuario(f);
-        usuarioService.addUsuario(g);
-
+        }
 
         Proyecto p1 = new Proyecto(1, "Proyecto1", a);
         Proyecto p2 = new Proyecto(2, "Proyecto2", b);
@@ -70,9 +71,6 @@ public class SparkRestEjercicio {
         proyectoService.asignarIncidente(a4,1);
         proyectoService.asignarIncidente(a5,3);
         proyectoService.asignarIncidente(a6,4);
-
-
-
 
         //----------------USUARIOS----------------------------
         post("/usuario", (request, response) -> {
