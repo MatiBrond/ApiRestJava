@@ -242,8 +242,12 @@ public class SparkRestEjercicio {
         post("proyecto", (request, response) -> {
             response.type("application/json");
             Proyecto proyecto = new Gson().fromJson(request.body(), Proyecto.class);
-            proyectoService.addProyecto(proyecto);
-            return new Gson().toJson(new StandardResponse(StatusResponse.SUCCESS));
+            if(proyectoService.getProyecto(proyecto.getId()) == null) {
+                proyectoService.addProyecto(proyecto);
+                return new Gson().toJson(new StandardResponse(StatusResponse.SUCCESS));
+            } else{
+                return new Gson().toJson(new StandardResponse(StatusResponse.ERROR));
+            }
 
         });
 

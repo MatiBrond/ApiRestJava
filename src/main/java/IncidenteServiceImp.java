@@ -33,7 +33,10 @@ public class IncidenteServiceImp implements IncidenteService {
 
     @Override
     public void addIncidente(Incidente incidente) {
-        this.incidente.put(incidente.getId(), incidente);
+
+        if(this.incidente.get(incidente.getId()) == null) {
+            this.incidente.put(incidente.getId(), incidente);
+        }
     }
 
     @Override

@@ -105,7 +105,11 @@ public class UsuarioServiceImp implements UsuarioService {
     }
 
     public boolean usuarioExist(int id) {
-        return false;
+        if(usuarioMap.get(id) != null) {
+            return true;
+        }else{
+            return false;
+        }
     }
 
     public Usuario usuarioEdit(Usuario usuario){
