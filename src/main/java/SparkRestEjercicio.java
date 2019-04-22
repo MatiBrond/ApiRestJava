@@ -73,6 +73,7 @@ public class SparkRestEjercicio {
         proyectoService.asignarIncidente(a6,4);
 
         //----------------USUARIOS----------------------------
+        //AGREGAR usuario
         post("/usuario", (request, response) -> {
 
             response.type("application/json");
@@ -82,6 +83,7 @@ public class SparkRestEjercicio {
 
         });
 
+        //Obtener usuarios
         get("/usuario", (request, response) -> {
             response.type("application/json");
             return new Gson().toJson(
@@ -90,6 +92,7 @@ public class SparkRestEjercicio {
                                     usuarioService.getUsuario())));
         });
 
+        //obtener usuario por id
         get("/usuario/:id", (request, response) -> {
 
             response.type("application/json");
@@ -101,6 +104,7 @@ public class SparkRestEjercicio {
                     )));
         });
 
+        //Modificar usuario
         put("/usuario/:id", (request, response) -> {
             response.type("application/json");
             int idUser = Integer.valueOf(request.params(":id"));
@@ -122,6 +126,7 @@ public class SparkRestEjercicio {
             }
         });
 
+        //Eliminar usuario por id
         delete("usuario/:id" , (request, response) -> {
             response.type("application/json");
             int idUser = Integer.parseInt(request.params(":id"));
@@ -135,6 +140,7 @@ public class SparkRestEjercicio {
 
         //-------------------INCIDENTES----------------------------------
 
+        //modificar incidente
         put("/incidente/:id", (request, response) -> {
             response.type("application/json");
             Incidente incidente = new Gson().fromJson(request.body(), Incidente.class);
@@ -154,6 +160,8 @@ public class SparkRestEjercicio {
             }
             });
 
+
+        //obtener incidentes
         get("/incidente", (request, response) -> {
             response.type("application/json");
             return new Gson().toJson(
@@ -163,6 +171,7 @@ public class SparkRestEjercicio {
                             incidenteService.getIncidente())));
         });
 
+        //asignar incidente a proyecto
         post("/proyecto/:id/incidente/", (request, response) -> {
 
             response.type("application/json");
@@ -203,6 +212,7 @@ public class SparkRestEjercicio {
 
         });
 
+        //Obtener incidentes de un proyecto
         get("/proyecto/:id/incidente", (request, response) -> {
 
             response.type("application/json");
@@ -216,6 +226,7 @@ public class SparkRestEjercicio {
                                     proyectoService.getIncidentes(idProyecto))));
         });
 
+        //obtener incidentes abiertos
         get("/incidente/abiertos", (request, response) -> {
 
             response.type("aplication/json");
@@ -226,6 +237,7 @@ public class SparkRestEjercicio {
                             new Gson().toJsonTree(incidenteService.getIncidentesAbiertos())));
         });
 
+        //obtener incidentes cerrados
         get("/incidente/resueltos", (request, response) -> {
 
             response.type("aplication/json");
@@ -251,6 +263,7 @@ public class SparkRestEjercicio {
 
         });
 
+        //obtener proyectos
         get("/proyecto", (request, response) -> {
 
             response.type("/application/json");
@@ -262,7 +275,8 @@ public class SparkRestEjercicio {
 
         });
 
-        get("/proyectoUser/:id", (request, response) -> {
+        //obtener proyectos de un usuario
+        get("/proyecto/usuario/:id", (request, response) -> {
             response.type("application/json");
 
             int id = Integer.valueOf(request.params(":id"));
@@ -275,6 +289,7 @@ public class SparkRestEjercicio {
 
         });
 
+        //obtener proyecto por id
         get("/proyecto/:id", (request, response) -> {
             response.type("application/json");
             int id = Integer.valueOf(request.params(":id"));

@@ -1,0 +1,576 @@
+{
+	"info": {
+		"_postman_id": "6c61fcfc-c5c2-415f-9774-3a51d2a7e1a3",
+		"name": "Ejercicio1",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Obtener usuarios",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "682dbd0a-0297-4a5f-995a-3a1dae00f03c",
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "localhost:8080/usuario",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"usuario"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Obtener proyectos",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "ea1e839d-fa81-4252-b83f-c992061bdfd3",
+						"exec": [
+							"pm.test(\"Contiene el usuario 'Martín' \", function () {",
+							"    pm.expect(pm.response.text()).to.include(\"Proyecto1\");",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "localhost:8080/proyecto",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"proyecto"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Obtener proyectos de un usuario",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "d121026e-7bb7-4d77-b184-bd30f8c17f05",
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "localhost:8080/proyecto/usuario/1",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"proyecto",
+						"usuario",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Obtener un proyecto por id",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "874d976b-a117-4f0c-8976-b455153e4eb3",
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "localhost:8080/proyecto",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"proyecto"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "GET proyecto por ID",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "localhost:8080/proyecto/4",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"proyecto",
+								"4"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Date",
+							"value": "Wed, 17 Apr 2019 00:36:10 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Server",
+							"value": "Jetty(9.4.15.v20190215)"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"status\": \"SUCCESS\",\n    \"data\": {\n        \"id\": 4,\n        \"nombre\": \"Proyecto4\",\n        \"propietario\": {\n            \"id\": 1,\n            \"nombre\": \"Juan\",\n            \"apellido\": \"filardo\"\n        },\n        \"incidente\": [\n            {\n                \"id\": 6,\n                \"clasificacion\": \"MENOR\",\n                \"descripcion\": \"Incidente6\",\n                \"reportador\": {\n                    \"id\": 6,\n                    \"nombre\": \"Emanuel David\",\n                    \"apellido\": \"Ginobili\"\n                },\n                \"responsable\": {\n                    \"id\": 1,\n                    \"nombre\": \"Juan\",\n                    \"apellido\": \"filardo\"\n                },\n                \"estado\": \"ASIGNADO\",\n                \"creacion\": \"Apr 16, 2019 9:26:02 PM\"\n            }\n        ]\n    }\n}"
+				}
+			]
+		},
+		{
+			"name": "Obtener incidentes",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "8eb332d9-8dc5-42c9-a404-d4f9cbbdac62",
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "localhost:8080/incidente",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"incidente"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Obtener incidentes de reportador",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "8dab0d02-69d1-4126-92c9-486b064a04c1",
+						"exec": [
+							"pm.test(\"Contiene el usuario 'Martín' \", function () {",
+							"    pm.expect(pm.response.text()).to.include(\"Juan\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "localhost:8080/incidente/reportador/1",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"incidente",
+						"reportador",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Obtener incidentes de responsable por id",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "8ebba237-1221-4e54-bacf-6a9fd81820c3",
+						"exec": [
+							"pm.test(\"Contiene el usuario 'Martín' \", function () {",
+							"    pm.expect(pm.response.text()).to.include(\"Incidente3\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "localhost:8080/incidente/responsable/1",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"incidente",
+						"responsable",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Obtener incidentes de un proyecto",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "9d37e14f-17fd-4af3-b933-ceced2c80f0e",
+						"exec": [
+							"pm.test(\"Contiene el usuario 'Martín' \", function () {",
+							"    pm.expect(pm.response.text()).to.include(\"Incidente1\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "localhost:8080/proyecto/1/incidente",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"proyecto",
+						"1",
+						"incidente"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Borrar usuario NO (reportador, responsable o propietario)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "b3fa2245-d0bf-4cff-af6f-08f07164a1ed",
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "localhost:8080/usuario/6",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"usuario",
+						"6"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Obtener Incidentes abiertos",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "localhost:8080/incidente/abiertos",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"incidente",
+						"abiertos"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Obtener incidentes resueltos",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "localhost:8080/incidente/resueltos",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"incidente",
+						"resueltos"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Modificar Incidente existente (cambio estado, agregar descripcion)",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "        {\n            \"id\": 1,\n            \"clasificacion\": \"CRITICO\",\n            \"descripcion\": \"Incidentsdfsdfe1\",\n            \"reportador\": {\n                \"id\": 1,\n                \"nombre\": \"Juan\",\n                \"apellido\": \"filardo\"\n            },\n            \"responsable\": {\n                \"id\": 2,\n                \"nombre\": \"Juan\",\n                \"apellido\": \"Beresiarte\"\n            },\n            \"estado\": \"RESUELTO\",\n            \"creacion\": \"Apr 21, 2019 3:35:49 PM\"\n        }"
+				},
+				"url": {
+					"raw": "localhost:8080/incidente/1",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"incidente",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Obtener Usuario por ID",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "6f353e9b-6b7a-437d-bc99-8a3a81df9ab1",
+						"exec": [
+							"pm.test(\"Probar que existe usuario valido\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.status).to.eql(\"SUCCESS\");",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "localhost:8080/usuario",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"usuario"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Agregar Usuario",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n            \"id\": 8,\n            \"nombre\": \"Luciano\",\n            \"apellido\": \"Terziotti\"\n        }"
+				},
+				"url": {
+					"raw": "localhost:8080/usuario",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"usuario"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Agregar proyecto",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n            \"id\": 8,\n            \"nombre\": \"ProyectoNuevoPost\",\n            \"propietario\": {\n                \"id\": 1,\n                \"nombre\": \"Juan\",\n                \"apellido\": \"filardo\"\n            },\n            \"incidente\": []\n        }"
+				},
+				"url": {
+					"raw": "localhost:8080/proyecto",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"proyecto"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "e306844b-219a-403c-a8a7-2a268b7d0933",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "deb6fd8f-9796-4945-aada-5861e7bb427c",
+				"type": "text/javascript",
+				"exec": [
+					"pm.test(\"Status code is 200\", function () {",
+					"    pm.response.to.have.status(200);",
+					"});",
+					""
+				]
+			}
+		}
+	]
+}
